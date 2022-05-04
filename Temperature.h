@@ -11,6 +11,8 @@
 #include <task.h>
 #include <semphr.h>
 
+#include "MeasureEventGroup.h"
+
 void initializeDriver();
 void createTemperatureClass(UBaseType_t Taskpriority);
 void TemperatureTask(void* parameter);
