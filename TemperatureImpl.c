@@ -12,7 +12,7 @@
 static uint16_t Temp;
 
 
-void initializeDriver(){
+void Temperature_initializeDriver(){
 	hih8120_driverReturnCode_t returnCode = hih8120_initialise();
 
 	if ( HIH8120_OK == returnCode )
@@ -25,7 +25,7 @@ void initializeDriver(){
 	}
 }
 
-void TemperatureTask(void* parameter){
+void createTemperatureClass(void* parameter){
 	
 	for(;;){
 		EventBits_t measureBits;
@@ -74,11 +74,11 @@ static void clearTemperatureBit(){
 	}
 }
 
-void createTemperatureClass(UBaseType_t Taskpriority){
-	initializeDriver();
+void Create_TemperatureTask(UBaseType_t Taskpriority){
+	Temperature_initializeDriver();
 	
 	xTaskCreate(
-	TemperatureTask,		
+	Create_TemperatureTask,		
 	"Temperature Task",		
 	TemperatureTaskStackSize,
 	NULL,

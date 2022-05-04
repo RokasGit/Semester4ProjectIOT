@@ -13,6 +13,6 @@
 
 #include "MeasureEventGroup.h"
 
-void initializeDriver();
-void createTemperatureClass(UBaseType_t Taskpriority);
-void TemperatureTask(void* parameter);
+void Temperature_initializeDriver();
+void createTemperatureClass(void* parameter); 
+void Create_TemperatureTask(UBaseType_t Taskpriority);
