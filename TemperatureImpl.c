@@ -39,7 +39,9 @@ void TemperatureTask(void* parameter){
 		
 		if((measureBits & BIT_READY_TO_MEASURE_TEMPERATURE)==BIT_READY_TO_MEASURE_TEMPERATURE){
 			
-			hih8120_driverReturnCode_t = hih8120_measure(void);
+			hih8120_driverReturnCode_t = hih8120_wakeup(void);
+			
+			vTaskDelay(pdMS_TO_TICKS(55)); 
 			
 			if(hih8120_driverReturnCode_t!= HIH8120_OK){
 				printf("Temperature MEASSURING FAILED!!")
