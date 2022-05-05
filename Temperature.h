@@ -17,3 +17,4 @@
 void Temperature_initializeDriver();
 void Temperature_Task(void* parameter); 
 void Temperature_createTask(UBaseType_t Taskpriority);
+static void clearTemperatureBit();
