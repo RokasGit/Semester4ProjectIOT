@@ -11,6 +11,12 @@
 
 static uint16_t Temp;
 
+//declaration of functions
+void Temperature_initializeDriver();
+void createTemperatureClass(void* parameter);
+static void clearTemperatureBit();
+void Create_TemperatureTask(UBaseType_t Taskpriority);
+
 
 void Temperature_initializeDriver(){
 	hih8120_driverReturnCode_t returnCode = hih8120_initialise();
@@ -39,15 +45,15 @@ void createTemperatureClass(void* parameter){
 		
 		if((measureBits & BIT_READY_TO_MEASURE_TEMPERATURE)==BIT_READY_TO_MEASURE_TEMPERATURE){
 			
-			hih8120_driverReturnCode_t = hih8120_wakeup(void);
+			hih8120_driverReturnCode_t returnCode = hih8120_wakeup();
 			
 			vTaskDelay(pdMS_TO_TICKS(55)); 
 			
-			if(hih8120_driverReturnCode_t!= HIH8120_OK){
-				printf("Temperature MEASSURING FAILED!!")
+			if(returnCode!= HIH8120_OK){
+				printf("Temperature MEASSURING FAILED!!");
 			}
 			
-			if(hih8120_driverReturnCode_t==HIH8120_OK){
+			if(returnCode==HIH8120_OK){
 				Temp = hih8120_getTemperature_x10();
 				clearTemperatureBit();
 			}

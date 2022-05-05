@@ -6,6 +6,15 @@
 */
 #include "CO2Sensor.h"
 static uint16_t lastCO2ppm;
+
+//declaration of functions
+static void mh_z19_callBack(uint16_t ppm);
+void CO2Sensor_initializeDriver();
+uint16_t CO2Sensor_getCO2();
+void CO2Sensor_Task();
+static void clearCO2ReadyBit();
+void CO2Sensor_createTask(UBaseType_t TaskPriority);
+
 static void mh_z19_callBack(uint16_t ppm){
 	lastCO2ppm = ppm;
 }
@@ -29,7 +38,7 @@ void CO2Sensor_Task(){
 		if((measureBits & BIT_READY_TO_MEASURE_CO2)==BIT_READY_TO_MEASURE_CO2){
 			CO2Sensor_returnCode = mh_z19_takeMeassuring();
 			if(CO2Sensor_returnCode!= MHZ19_OK){
-				printf("CO2 MEASSURING FAILED!!")
+				printf("CO2 MEASSURING FAILED!!");
 			}
 			if(CO2Sensor_returnCode==MHZ19_OK){
 				clearCO2ReadyBit();

@@ -11,6 +11,13 @@
 
 static uint16_t Hum;
 
+//declaration of functions
+void Humidity_initializeDriver();
+void createHumidityClass(void* parameter);
+static void clearHumidityBit();
+void Create_HumidityTask(UBaseType_t Taskpriority);
+
+
 void Humidity_initializeDriver(){
 	hih8120_driverReturnCode_t returnCode = hih8120_initialise();
 
@@ -20,7 +27,7 @@ void Humidity_initializeDriver(){
 	}
 	
 	else {
-		printf("Error: %s", returnCode);
+		printf("Error: %d", returnCode);
 	}
 }
 
@@ -39,15 +46,15 @@ void createHumidityClass(void* parameter){
 		
 		if((measureBits & BIT_READY_TO_MEASURE_HUMIDITY)==BIT_READY_TO_MEASURE_HUMIDITY){
 			
-			hih8120_driverReturnCode_t = hih8120_wakeup(void);
+			hih8120_driverReturnCode_t returnCode = hih8120_wakeup();
 			
 			vTaskDelay(pdMS_TO_TICKS(55));
 			
-			if(hih8120_driverReturnCode_t!= HIH8120_OK){
-				printf("Humidity MEASSURING FAILED!!")
+			if(returnCode!= HIH8120_OK){
+				printf("Humidity MEASSURING FAILED!!");
 			}
 			
-			if(hih8120_driverReturnCode_t==HIH8120_OK){
+			if(returnCode==HIH8120_OK){
 				Hum = hih8120_getHumidityPercent_x10();
 				clearHumidityBit();
 			}

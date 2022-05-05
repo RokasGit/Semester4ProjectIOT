@@ -10,6 +10,7 @@
 #include <ATMEGA_FreeRTOS.h>
 #include <task.h>
 #include <semphr.h>
+#include <hih8120.h>
 
 #include "MeasureEventGroup.h"
 
