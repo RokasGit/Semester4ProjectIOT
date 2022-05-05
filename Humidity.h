@@ -16,5 +16,5 @@
 
 void Humidity_initializeDriver();
 void Humidity_Task(void* parameter);
-static void clearHumidityBit()
+static void clearHumidityBit();
 void Humidity_createTask(UBaseType_t Taskpriority);
