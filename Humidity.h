@@ -14,6 +14,7 @@
 
 #include "MeasureEventGroup.h"
 
-void humidity_initializeDriver();
-void humidity_HumidityTask(void* parameter);
-void humidity_createTask(UBaseType_t Taskpriority);
+void Humidity_initializeDriver();
+void Humidity_Task(void* parameter);
+static void clearHumidityBit()
+void Humidity_createTask(UBaseType_t Taskpriority);
