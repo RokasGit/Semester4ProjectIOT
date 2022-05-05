@@ -29,7 +29,7 @@ void CO2Sensor_Task(){
 		if((measureBits & BIT_READY_TO_MEASURE_CO2)==BIT_READY_TO_MEASURE_CO2){
 			CO2Sensor_returnCode = mh_z19_takeMeassuring();
 			if(CO2Sensor_returnCode!= MHZ19_OK){
-				printf("CO2 MEASSURING FAILED!!")
+				printf("CO2 MEASSURING FAILED!!");
 			}
 			if(CO2Sensor_returnCode==MHZ19_OK){
 				clearCO2ReadyBit();

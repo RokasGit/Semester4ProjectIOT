@@ -130,6 +130,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CO2Sensor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="CO2Sensor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="drivers\display_7seg.h">
       <SubType>compile</SubType>
     </Compile>
