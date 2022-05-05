@@ -11,11 +11,6 @@
 
 static uint16_t Temp;
 
-//declaration of functions
-void Temperature_initializeDriver();
-void createTemperatureClass(void* parameter);
-static void clearTemperatureBit();
-void Create_TemperatureTask(UBaseType_t Taskpriority);
 
 
 void Temperature_initializeDriver(){
@@ -31,7 +26,7 @@ void Temperature_initializeDriver(){
 	}
 }
 
-void createTemperatureClass(void* parameter){
+void Temperature_Task(void* parameter){
 	
 	for(;;){
 		EventBits_t measureBits;
@@ -80,7 +75,7 @@ static void clearTemperatureBit(){
 	}
 }
 
-void Create_TemperatureTask(UBaseType_t Taskpriority){
+void Temperature_createTask(UBaseType_t Taskpriority){
 	Temperature_initializeDriver();
 	
 	xTaskCreate(
