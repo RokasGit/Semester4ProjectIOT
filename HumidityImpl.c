@@ -5,17 +5,11 @@
  *  Author: Nick
  */ 
 
-#include "Temperature.h"
+#include "Humidity.h"
 
 #define HumidityTaskStackSize (configMINIMAL_STACK_SIZE)
 
 static uint16_t Hum;
-
-//declaration of functions
-void Humidity_initializeDriver();
-void createHumidityClass(void* parameter);
-static void clearHumidityBit();
-void Create_HumidityTask(UBaseType_t Taskpriority);
 
 
 void Humidity_initializeDriver(){
@@ -31,7 +25,7 @@ void Humidity_initializeDriver(){
 	}
 }
 
-void createHumidityClass(void* parameter){
+void Humidity_Task(void* parameter){
 	
 	
 	for(;;){
@@ -81,7 +75,7 @@ static void clearHumidityBit(){
 	}
 }
 
-void Create_HumidityTask(UBaseType_t Taskpriority){
+void Humidity_createTask(UBaseType_t Taskpriority){
 	Humidity_initializeDriver();
 	
 	xTaskCreate(
