@@ -13,7 +13,7 @@
 #include <status_leds.h>
 
 // Parameters for OTAA join - You have got these in a mail from IHA
-#define LORA_appEUI "0004A30B00F398F2"
+#define LORA_appEUI "C5F259409469FAB3"
 #define LORA_appKEY "33585BB2189CA84FC01A64616B90C52B"
 
 void lora_handler_task( void *pvParameters );

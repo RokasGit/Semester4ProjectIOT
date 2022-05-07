@@ -13,6 +13,6 @@
 #define BIT_READY_TO_MEASURE_TEMPERATURE (1 << 1)
 #define BIT_READY_TO_MEASURE_HUMIDITY (1 << 2)
 // extend the event group visibility
-extern EventGroupHandle_t measureEventGroup;
+EventGroupHandle_t measureEventGroup;
 
-void measureEventGroup_initilize();
+void measureEventGroup_initialize();

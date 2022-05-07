@@ -8,6 +8,8 @@
 static uint16_t lastCO2ppm;
 static void mh_z19_callBack(uint16_t ppm){
 	lastCO2ppm = ppm;
+	xEventGroupSetBits(measureEventGroup,BIT_READY_TO_MEASURE_TEMPERATURE);
+	xEventGroupSetBits(dataReadyEventGroup,BIT_READY_TO_SEND_CO2);
 }
 void CO2Sensor_initializeDriver(){
 	mh_z19_initialise(ser_USART3);

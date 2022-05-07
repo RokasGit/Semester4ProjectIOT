@@ -5,6 +5,7 @@
 *  Author: rokas
 */
 #include "MeasureEventGroup.h"
-void measureEventGroup_initilize(){
+void measureEventGroup_initialize(){
 	measureEventGroup = xEventGroupCreate();
+	xEventGroupSetBits(measureEventGroup, BIT_READY_TO_MEASURE_CO2);
 }

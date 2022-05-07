@@ -22,7 +22,7 @@ void Temperature_initializeDriver(){
 	}
 	
 	else {
-		printf("Error: %s", returnCode);
+		printf("Error: %d", returnCode);
 	}
 }
 
@@ -50,6 +50,8 @@ void Temperature_Task(void* parameter){
 			
 			if(returnCode==HIH8120_OK){
 				Temp = hih8120_getTemperature_x10();
+				xEventGroupSetBits(measureEventGroup,BIT_READY_TO_MEASURE_HUMIDITY);
+				xEventGroupSetBits(dataReadyEventGroup,BIT_READY_TO_SEND_TEMPERATURE);
 				clearTemperatureBit();
 			}
 			
@@ -74,12 +76,14 @@ static void clearTemperatureBit(){
 		// Bits were not set
 	}
 }
-
+uint16_t Temperature_getTemperature(){
+	return Temp;
+}
 void Temperature_createTask(UBaseType_t Taskpriority){
 	Temperature_initializeDriver();
 	
 	xTaskCreate(
-	Create_TemperatureTask,		
+	Temperature_Task,		
 	"Temperature Task",		
 	TemperatureTaskStackSize,
 	NULL,
