@@ -28,14 +28,16 @@ void application_Task(void *pvParameters){
 			printf("Ready to send measurements");
 			printf("CO2: %d, Temperature: %d, Humidity: %d",CO2Sensor_getCO2(),Temperature_getTemperature(),Humidity_getHumidity());
 			application_setPackageHandler();
+			vTaskDelay(pdMS_TO_TICKS(60000));
 			xEventGroupSetBits(measureEventGroup, BIT_READY_TO_MEASURE_CO2);
 			
 		}
 	}
 	
 }
-// getting application package
+// configuring package settings.
 void application_setPackageHandler(){
+	sensorDataPackageHandler_setPackageLength(6);
 	sensorDataPackageHandler_setCo2Ppm(CO2Sensor_getCO2());
 	sensorDataPackageHandler_setHumidity(Humidity_getHumidity());
 	sensorDataPackageHandler_setTemperature(Temperature_getTemperature());
