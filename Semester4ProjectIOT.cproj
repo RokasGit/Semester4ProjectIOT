@@ -40,6 +40,22 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
+    <avrtoolserialnumber>J42700024557</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0x1E9801</avrdeviceexpectedsignature>
+    <com_atmel_avrdbg_tool_atmelice>
+      <ToolOptions>
+        <InterfaceProperties>
+          <JtagDbgClock>200000</JtagDbgClock>
+        </InterfaceProperties>
+        <InterfaceName>JTAG</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
+      <ToolNumber>J42700024557</ToolNumber>
+      <ToolName>Atmel-ICE</ToolName>
+    </com_atmel_avrdbg_tool_atmelice>
+    <avrtoolinterface>JTAG</avrtoolinterface>
+    <avrtoolinterfaceclock>200000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -130,10 +146,22 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Application.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Application.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="CO2Sensor.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="CO2Sensor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DataReadyEventGroup.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DataReadyEventGroup.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="drivers\display_7seg.h">
@@ -181,6 +209,12 @@
     <Compile Include="drivers\twi.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Humidity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HumidityImpl.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MeasureEventGroup.c">
       <SubType>compile</SubType>
     </Compile>
@@ -191,6 +225,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="SensorDataPackageHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="TemperatureImpl.c">
       <SubType>compile</SubType>
     </Compile>
     <None Include="FreeRTOS\Example\main.c">

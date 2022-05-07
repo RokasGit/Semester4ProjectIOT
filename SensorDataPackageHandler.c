@@ -7,6 +7,10 @@
 #include "SensorDataPackageHandler.h"
 // CO2 measurement in ppm;
 static uint16_t co2Ppm;
+// humidity measurement in percents
+static uint16_t humidityPercent;
+// temperature measurement in celsius.
+static uint16_t temperatureCelsius;
 // LoraWAN package size;
 static uint8_t loraPackageLength;
 
@@ -14,10 +18,19 @@ static uint8_t loraPackageLength;
 void sensorDataPackageHandler_setCo2Ppm(uint16_t ppm){
 	co2Ppm = ppm;
 }
+// function to set Temperature celsius for package.
+void sensorDataPackageHandler_setTemperature(uint16_t celsius){
+	temperatureCelsius= celsius;
+}
+// function to set Humidity for package.
+void sensorDataPackageHandler_setHumidity(uint16_t hum){
+	humidityPercent=hum;
+}
 // function to set LoraWAN package size;
 void sensorDataPackageHandler_setPackageLength(uint8_t packageLength){
 	loraPackageLength=packageLength;
 }
+// function to create a package to upload to loraWAN gateway.
 lora_driver_payload_t sensorDataPackageHandler_getLoraPayload(uint8_t port_No){
 	lora_driver_payload_t *uplink_payload;
 	
@@ -28,6 +41,10 @@ lora_driver_payload_t sensorDataPackageHandler_getLoraPayload(uint8_t port_No){
 		uplink_payload->len=loraPackageLength;
 		uplink_payload->bytes[0]=co2Ppm >> 8;
 		uplink_payload->bytes[1]=co2Ppm & 0xFF;
+		uplink_payload->bytes[2]=temperatureCelsius >> 8;
+		uplink_payload->bytes[3]=temperatureCelsius & 0xFF;
+		uplink_payload->bytes[4]=humidityPercent >> 8;
+		uplink_payload->bytes[5]=humidityPercent &0xFF;
 	}
 	return *uplink_payload;
 }

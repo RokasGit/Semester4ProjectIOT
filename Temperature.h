@@ -13,8 +13,10 @@
 #include <hih8120.h>
 
 #include "MeasureEventGroup.h"
+#include "DataReadyEventGroup.h"
 
 void Temperature_initializeDriver();
 void Temperature_Task(void* parameter); 
+uint16_t Temperature_getTemperature();
 void Temperature_createTask(UBaseType_t Taskpriority);
 static void clearTemperatureBit();

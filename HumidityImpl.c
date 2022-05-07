@@ -11,7 +11,9 @@
 
 static uint16_t Hum;
 
-
+uint16_t Humidity_getHumidity(){
+	return Hum;
+}
 void Humidity_initializeDriver(){
 	hih8120_driverReturnCode_t returnCode = hih8120_initialise();
 
@@ -50,6 +52,7 @@ void Humidity_Task(void* parameter){
 			
 			if(returnCode==HIH8120_OK){
 				Hum = hih8120_getHumidityPercent_x10();
+				xEventGroupSetBits(dataReadyEventGroup,BIT_READY_TO_SEND_HUMIDITY);
 				clearHumidityBit();
 			}
 			
@@ -79,7 +82,7 @@ void Humidity_createTask(UBaseType_t Taskpriority){
 	Humidity_initializeDriver();
 	
 	xTaskCreate(
-	Create_HumidityTask,
+	Humidity_Task,
 	"Humidity Task",
 	HumidityTaskStackSize,
 	NULL,

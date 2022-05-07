@@ -11,9 +11,9 @@
 #include <event_groups.h>
 
 #include "MeasureEventGroup.h"
-
+#include "DataReadyEventGroup.h"
 // extend visibility of CO2 sensor status
-extern mh_z19_returnCode_t CO2Sensor_returnCode;
+mh_z19_returnCode_t CO2Sensor_returnCode;
 
 void CO2Sensor_createTask(UBaseType_t TaskPriority);
 void CO2Sensor_Task();

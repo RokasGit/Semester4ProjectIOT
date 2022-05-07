@@ -20,80 +20,34 @@
 #include <lora_driver.h>
 #include <status_leds.h>
 
-// define two Tasks
-void task1( void *pvParameters );
-void task2( void *pvParameters );
+// Application functionality
+#include "DataReadyEventGroup.h"
+#include "MeasureEventGroup.h"
+#include "Application.h"
 
-// define semaphore handle
-SemaphoreHandle_t xTestSemaphore;
+// Sensors
+#include "Temperature.h"
+#include "CO2Sensor.h"
+#include "Humidity.h"
+
+
 
 // Prototype for LoRaWAN handler
 void lora_handler_initialise(UBaseType_t lora_handler_task_priority);
 
-/*-----------------------------------------------------------*/
-void create_tasks_and_semaphores(void)
-{
-	// Semaphores are useful to stop a Task proceeding, where it should be paused to wait,
-	// because it is sharing a resource, such as the Serial port.
-	// Semaphores should only be used whilst the scheduler is running, but we can set it up here.
-	if ( xTestSemaphore == NULL )  // Check to confirm that the Semaphore has not already been created.
-	{
-		xTestSemaphore = xSemaphoreCreateMutex();  // Create a mutex semaphore.
-		if ( ( xTestSemaphore ) != NULL )
-		{
-			xSemaphoreGive( ( xTestSemaphore ) );  // Make the mutex available for use, by initially "Giving" the Semaphore.
-		}
-	}
 
-	xTaskCreate(
-	task1
-	,  "Task1"  // A name just for humans
-	,  configMINIMAL_STACK_SIZE  // This stack size can be checked & adjusted by reading the Stack Highwater
-	,  NULL
-	,  2  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
-	,  NULL );
-
-	xTaskCreate(
-	task2
-	,  "Task2"  // A name just for humans
-	,  configMINIMAL_STACK_SIZE  // This stack size can be checked & adjusted by reading the Stack Highwater
-	,  NULL
-	,  1  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
-	,  NULL );
+void initialiseGroupsBuffers(){
+	dataReadyEventGroup_initialize();
+	measureEventGroup_initialize();
 }
-
 /*-----------------------------------------------------------*/
-void task1( void *pvParameters )
+void createTasks(void)
 {
-	TickType_t xLastWakeTime;
-	const TickType_t xFrequency = 500/portTICK_PERIOD_MS; // 500 ms
-
-	// Initialise the xLastWakeTime variable with the current time.
-	xLastWakeTime = xTaskGetTickCount();
-
-	for(;;)
-	{
-		xTaskDelayUntil( &xLastWakeTime, xFrequency );
-		puts("Task1"); // stdio functions are not reentrant - Should normally be protected by MUTEX
-		PORTA ^= _BV(PA0);
-	}
-}
-
-/*-----------------------------------------------------------*/
-void task2( void *pvParameters )
-{
-	TickType_t xLastWakeTime;
-	const TickType_t xFrequency = 1000/portTICK_PERIOD_MS; // 1000 ms
-
-	// Initialise the xLastWakeTime variable with the current time.
-	xLastWakeTime = xTaskGetTickCount();
-
-	for(;;)
-	{
-		xTaskDelayUntil( &xLastWakeTime, xFrequency );
-		puts("Task2"); // stdio functions are not reentrant - Should normally be protected by MUTEX
-		PORTA ^= _BV(PA7);
-	}
+	CO2Sensor_createTask(1);
+	Temperature_createTask(1);
+	Humidity_createTask(1);
+	application_createTask(2);
+	
 }
 
 /*-----------------------------------------------------------*/
@@ -104,8 +58,10 @@ void initialiseSystem()
 
 	// Make it possible to use stdio on COM port 0 (USB) on Arduino board - Setting 57600,8,N,1
 	stdio_initialise(ser_USART0);
+	// creating buffers and groups
+	initialiseGroupsBuffers();
 	// Let's create some tasks
-	create_tasks_and_semaphores();
+	createTasks();
 
 	// vvvvvvvvvvvvvvvvv BELOW IS LoRaWAN initialisation vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	// Status Leds driver
