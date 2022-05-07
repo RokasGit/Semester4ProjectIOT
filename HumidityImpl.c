@@ -2,7 +2,7 @@
  * HumidityImpl.c
  *
  * Created: 5/4/2022 10:43:34 PM
- *  Author: Nick
+ *  Author: Farouk
  */ 
 
 #include "Humidity.h"

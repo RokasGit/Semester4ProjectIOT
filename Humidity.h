@@ -2,7 +2,7 @@
  * Humidity.h
  *
  * Created: 5/4/2022 10:41:00 PM
- *  Author: Nick
+ *  Author: Farouk
  */ 
 
 #include <stdio.h>
