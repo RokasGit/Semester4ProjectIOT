@@ -44,9 +44,12 @@ void Temperature_Task(void* parameter){
 			
 			vTaskDelay(pdMS_TO_TICKS(55)); 
 			
-			if(returnCode!= HIH8120_OK){
+			if(HIH8120_OK !=  hih8120_measure()){
 				printf("Temperature MEASSURING FAILED!!");
+				continue;
 			}
+
+			vTaskDelay(pdMS_TO_TICKS(10));
 			
 			if(returnCode==HIH8120_OK){
 				Temp = hih8120_getTemperature_x10();
