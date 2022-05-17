@@ -28,7 +28,7 @@ void application_Task(void *pvParameters){
 			printf("Ready to send measurements");
 			printf("CO2: %d, Temperature: %d, Humidity: %d",CO2Sensor_getCO2(),Temperature_getTemperature(),Humidity_getHumidity());
 			application_setPackageHandler();
-			vTaskDelay(pdMS_TO_TICKS(60000));
+			vTaskDelay(pdMS_TO_TICKS(30000));
 			xEventGroupSetBits(measureEventGroup, BIT_READY_TO_MEASURE_CO2);
 			
 		}
