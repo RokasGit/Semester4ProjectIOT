@@ -158,10 +158,28 @@
     <Compile Include="CO2Sensor.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Configuration.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="DataReadyEventGroup.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="DataReadyEventGroup.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DownlinkLoraWANHandler.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DownlinkLoraWANHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DownlinkMessageBuffer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DownlinkMessageBuffer.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="drivers\display_7seg.h">
@@ -225,6 +243,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MotionImpl.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RCServo.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RCServo.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="SensorDataPackageHandler.c">

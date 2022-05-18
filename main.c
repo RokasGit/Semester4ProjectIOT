@@ -24,11 +24,13 @@
 #include "DataReadyEventGroup.h"
 #include "MeasureEventGroup.h"
 #include "Application.h"
-
-// Sensors
+#include "DownlinkMessageBuffer.h"
+#include "Configuration.h"
+// Sensors/Hardware
 #include "Temperature.h"
 #include "CO2Sensor.h"
 #include "Humidity.h"
+#include "RCServo.h"
 
 
 
@@ -39,6 +41,10 @@ void lora_handler_initialise(UBaseType_t lora_handler_task_priority);
 void initialiseGroupsBuffers(){
 	dataReadyEventGroup_initialize();
 	measureEventGroup_initialize();
+	downlinkMessageBuffer_create();
+	configuration_create();
+	rcServo_CreateSemaphore();
+	
 }
 /*-----------------------------------------------------------*/
 void createTasks(void)
@@ -48,6 +54,8 @@ void createTasks(void)
 	Humidity_createTask(1);
 	Motion_createTask(1);
 	application_createTask(2);
+	rcServo_CreateTask(1);
+	downlinkLoraWANHandler_createTask(3);
 	
 }
 
@@ -68,9 +76,9 @@ void initialiseSystem()
 	// Status Leds driver
 	status_leds_initialise(5); // Priority 5 for internal task
 	// Initialise the LoRaWAN driver without down-link buffer
-	lora_driver_initialise(1, NULL);
+	lora_driver_initialise(1, downlinkMessageBuffer);
 	// Create LoRaWAN task and start it up with priority 3
-	lora_handler_initialise(3);
+	lora_handler_initialise(4);
 }
 
 /*-----------------------------------------------------------*/
