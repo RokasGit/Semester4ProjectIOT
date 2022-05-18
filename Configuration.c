@@ -9,6 +9,7 @@
 
 void configuration_create(){
 	rcServoState=-100;
+	isMoving=0;
 	configurationSemaphore = xSemaphoreCreateMutex();
 	xSemaphoreGive( configurationSemaphore);
 }
@@ -24,4 +25,10 @@ uint16_t configuration_getServoState(){
 		xSemaphoreGive(configurationSemaphore);
 		return rcServoState;
 	}
+}
+int configuration_getIsMoving(){
+	return isMoving;
+}
+void configuration_setIsMoving(int moving){
+	isMoving=moving;
 }

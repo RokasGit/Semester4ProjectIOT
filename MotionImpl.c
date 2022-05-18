@@ -9,7 +9,6 @@
 
 #define MotionTaskStackSize (configMINIMAL_STACK_SIZE)
 
-static int isMoving;
 
 static uint16_t NrOfMovements;
 
@@ -36,23 +35,20 @@ void Motion_Task(void* parameter){
 		if ( hcsr501_isDetecting(hcsr501Inst) )
 		{
 			// Something is detected
-			isMoving = 1;
+			configuration_setIsMoving(1);
 			NrOfMovements++;
-			printf("MOVEMENT DETECTED");
+			printf("MOVEMENT DETECTED: %d times \n",NrOfMovements);
 		}
 		else
 		{
 			// Nothing is detected
-			isMoving = 0;
+			configuration_setIsMoving(0);
+			printf("FCK OFF not moving %d \n", configuration_getIsMoving());
 		}
+		vTaskDelay(pdMS_TO_TICKS(1000));
 		
 	}
 	
-}
-
-
-int Motion_getIsMoving (){
-	return isMoving;
 }
 
 uint16_t Motion_NrOfMovements(){

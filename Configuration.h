@@ -14,7 +14,10 @@
 
 SemaphoreHandle_t configurationSemaphore;
 uint16_t rcServoState;
+int isMoving;
 
 void configuration_create();
 void configuration_setServoState(uint16_t state);
 uint16_t configuration_getServoState();
+int configuration_getIsMoving();
+void configuration_setIsMoving(int moving);

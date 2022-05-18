@@ -13,11 +13,9 @@
 #include <semphr.h>
 #include <hcSr501.h>
 
-#include "MeasureEventGroup.h"
-#include "DataReadyEventGroup.h"
+#include "Configuration.h"
 
 void Motion_initializeDriver();
 void Motion_Task(void* parameter);
-int Motion_getIsMoving();
 uint16_t Motion_NrOfMovements();
 void Motion_createTask(UBaseType_t Taskpriority);
