@@ -10,6 +10,10 @@
 void configuration_create(){
 	rcServoState=-100;
 	isMoving=0;
+	automationOff=0;
+	maxCO2Level = 1000;
+	maxHumidityLevel = 550;
+	minHumidityLevel = 400;
 	configurationSemaphore = xSemaphoreCreateMutex();
 	xSemaphoreGive( configurationSemaphore);
 }
@@ -31,4 +35,19 @@ int configuration_getIsMoving(){
 }
 void configuration_setIsMoving(int moving){
 	isMoving=moving;
+}
+uint16_t configuration_getMaxCO2Level(){
+	return maxCO2Level;
+}
+uint16_t configuration_getMaxHumidityLevel(){
+	return maxHumidityLevel;
+}
+uint16_t configuration_getMinHumidityLevel(){
+	return minHumidityLevel;
+}
+void configuration_setAutomation(int automation){
+	automationOff=automation;
+}
+int configuration_getAutomation(){
+	return automationOff;
 }

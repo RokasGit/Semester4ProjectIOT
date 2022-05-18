@@ -11,6 +11,8 @@
 #include <task.h>
 #include <event_groups.h>
 
+// config to control window automatically
+#include "Configuration.h"
 // package to send to lorawan gateway
 #include "SensorDataPackageHandler.h"
 // event groups to start measuring and wait for results

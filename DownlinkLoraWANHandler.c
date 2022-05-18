@@ -24,6 +24,11 @@ void downlinkLoraWANHandler_Task(){
 		if(downlinkLoraWAN_Payload.len==1){
 			uint16_t state = downlinkLoraWAN_Payload.bytes[0];
 			configuration_setServoState(state);
+			if(state!=-100){
+				configuration_setAutomation(1);
+			}else{
+				configuration_setAutomation(0);
+			}
 		}
 		vTaskDelay(pdMS_TO_TICKS(200));
 	}
