@@ -44,7 +44,7 @@ void Motion_Task(void* parameter){
 			// Nothing is detected
 			configuration_setIsMoving(0);
 		}
-		vTaskDelay(pdMS_TO_TICKS(1000));
+		vTaskDelay(pdMS_TO_TICKS(10000));
 		
 	}
 	
