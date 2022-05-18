@@ -10,6 +10,8 @@
 #include <ATMEGA_FreeRTOS.h>
 #include <semphr.h>
 
+#include "RCServo.h"
+
 SemaphoreHandle_t configurationSemaphore;
 uint16_t rcServoState;
 

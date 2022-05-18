@@ -16,6 +16,7 @@ void configuration_setServoState(uint16_t state){
 	if(xSemaphoreTake(configurationSemaphore,portMAX_DELAY)==pdTRUE){
 		rcServoState=state;
 		xSemaphoreGive(configurationSemaphore);
+		xSemaphoreGive(rcServoSemaphore);
 	}
 }
 uint16_t configuration_getServoState(){

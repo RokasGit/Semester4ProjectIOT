@@ -25,10 +25,12 @@
 #include "MeasureEventGroup.h"
 #include "Application.h"
 #include "DownlinkMessageBuffer.h"
-// Sensors
+#include "Configuration.h"
+// Sensors/Hardware
 #include "Temperature.h"
 #include "CO2Sensor.h"
 #include "Humidity.h"
+#include "RCServo.h"
 
 
 
@@ -41,6 +43,8 @@ void initialiseGroupsBuffers(){
 	measureEventGroup_initialize();
 	downlinkMessageBuffer_create();
 	configuration_create();
+	rcServo_CreateSemaphore();
+	
 }
 /*-----------------------------------------------------------*/
 void createTasks(void)
@@ -49,6 +53,7 @@ void createTasks(void)
 	Temperature_createTask(1);
 	Humidity_createTask(1);
 	application_createTask(2);
+	rcServo_CreateTask(1);
 	downlinkLoraWANHandler_createTask(3);
 	
 }
