@@ -43,7 +43,6 @@ void Motion_Task(void* parameter){
 		{
 			// Nothing is detected
 			configuration_setIsMoving(0);
-			printf("FCK OFF not moving %d \n", configuration_getIsMoving());
 		}
 		vTaskDelay(pdMS_TO_TICKS(1000));
 		
