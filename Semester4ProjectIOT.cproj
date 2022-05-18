@@ -221,6 +221,12 @@
     <Compile Include="MeasureEventGroup.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Motion.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MotionImpl.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="SensorDataPackageHandler.c">
       <SubType>compile</SubType>
     </Compile>

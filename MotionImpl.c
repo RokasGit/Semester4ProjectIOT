@@ -11,6 +11,8 @@
 
 static int isMoving;
 
+static uint16_t NrOfMovements;
+
 hcsr501_p hcsr501Inst = NULL;
 
 void Motion_initializeDriver(){
@@ -30,54 +32,31 @@ void Motion_initializeDriver(){
 void Motion_Task(void* parameter){
 	
 	for(;;){
-		EventBits_t measureBits;
-		measureBits = xEventGroupWaitBits(
-		measureEventGroup, // measure event group
-		BIT_READY_TO_MEASURE_MOTION, // wait for temperature ready to measure
-		pdFALSE, // no need to clear, clearing manually in callback
-		pdTRUE, // wait for all bits(ONLY CO2)
-		portMAX_DELAY // wait infinity till timeout
-		);
 		
-		if((measureBits & BIT_READY_TO_MEASURE_MOTION)==BIT_READY_TO_MEASURE_MOTION){
-			
-			if ( hcsr501_isDetecting(hcsr501Inst) )
-			{
-				// Something is detected
-				isMoving = 1;
-			}
-			else
-			{
-				// Nothing is detected
-				isMoving = 0;
-			}
-			
+		if ( hcsr501_isDetecting(hcsr501Inst) )
+		{
+			// Something is detected
+			isMoving = 1;
+			NrOfMovements++;
+			printf("MOVEMENT DETECTED");
 		}
-		vTaskDelay(pdMS_TO_TICKS(200));
+		else
+		{
+			// Nothing is detected
+			isMoving = 0;
+		}
+		
 	}
 	
-}
-
-
-static void clearMotionBit(){
-	EventBits_t clearedMotionBit;
-	
-	clearedMotionBit = xEventGroupClearBits(
-	measureEventGroup, // clearing in measure event group the motion bit after taking the measure;
-	BIT_READY_TO_MEASURE_MOTION); // clearing the motion bit
-	if((clearedMotionBit & BIT_READY_TO_MEASURE_MOTION) == BIT_READY_TO_MEASURE_MOTION){
-		// BIT motion was set before clear was called, now will be clear
-		}else if((clearedMotionBit & BIT_READY_TO_MEASURE_MOTION) !=0){
-		/* motion bit was set before clear was called,
-		It will be clear now.*/
-		}else{
-		// Bits were not set
-	}
 }
 
 
 int Motion_getIsMoving (){
 	return isMoving;
+}
+
+uint16_t Motion_NrOfMovements(){
+	return NrOfMovements;
 }
 
 

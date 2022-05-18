@@ -12,7 +12,6 @@
 #define BIT_READY_TO_MEASURE_CO2 (1 << 0)
 #define BIT_READY_TO_MEASURE_TEMPERATURE (1 << 1)
 #define BIT_READY_TO_MEASURE_HUMIDITY (1 << 2)
-#define BIT_READY_TO_MEASURE_MOTION (1 << 3) // idk
 // extend the event group visibility
 EventGroupHandle_t measureEventGroup;
 

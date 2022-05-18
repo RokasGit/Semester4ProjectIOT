@@ -19,5 +19,5 @@
 void Motion_initializeDriver();
 void Motion_Task(void* parameter);
 int Motion_getIsMoving();
+uint16_t Motion_NrOfMovements();
 void Motion_createTask(UBaseType_t Taskpriority);
-static void clearMotionBit();
