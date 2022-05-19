@@ -2,7 +2,7 @@
 * Configuration.c
 *
 * Created: 5/18/2022 12:13:40 PM
-*  Author: rokas
+*  Author: rokas, farouk
 */
 #include "Configuration.h"
 
@@ -35,6 +35,19 @@ int configuration_getIsMoving(){
 }
 void configuration_setIsMoving(int moving){
 	isMoving=moving;
+}
+
+void configuration_SetLightOnAndOf(){
+		if (configuration_getIsMoving == 1)
+		{
+			// Something is detected
+			status_leds_ledOn();
+		}
+		else
+		{
+			// Nothing is detected
+			status_leds_ledOff();
+		}
 }
 uint16_t configuration_getMaxCO2Level(){
 	return maxCO2Level;
