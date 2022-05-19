@@ -47,8 +47,9 @@ void application_Task(void *pvParameters){
 }
 // configuring package settings.
 void application_setPackageHandler(){
-	sensorDataPackageHandler_setPackageLength(6);
+	sensorDataPackageHandler_setPackageLength(8);
 	sensorDataPackageHandler_setCo2Ppm(CO2Sensor_getCO2());
 	sensorDataPackageHandler_setHumidity(Humidity_getHumidity());
 	sensorDataPackageHandler_setTemperature(Temperature_getTemperature());
+	sensorDataPackageHandler_setWindowState(configuration_getServoState());
 }

@@ -11,6 +11,8 @@ static uint16_t co2Ppm;
 static uint16_t humidityPercent;
 // temperature measurement in celsius.
 static uint16_t temperatureCelsius;
+// window state
+static uint16_t servoState;
 // LoraWAN package size;
 static uint8_t loraPackageLength;
 
@@ -30,6 +32,10 @@ void sensorDataPackageHandler_setHumidity(uint16_t hum){
 void sensorDataPackageHandler_setPackageLength(uint8_t packageLength){
 	loraPackageLength=packageLength;
 }
+// function to set servo state
+void sensorDataPackageHandler_setWindowState(uint16_t state){
+servoState=state;
+}
 // function to create a package to upload to loraWAN gateway.
 lora_driver_payload_t sensorDataPackageHandler_getLoraPayload(uint8_t port_No){
 	lora_driver_payload_t *uplink_payload;
@@ -45,6 +51,8 @@ lora_driver_payload_t sensorDataPackageHandler_getLoraPayload(uint8_t port_No){
 		uplink_payload->bytes[3]=temperatureCelsius & 0xFF;
 		uplink_payload->bytes[4]=humidityPercent >> 8;
 		uplink_payload->bytes[5]=humidityPercent &0xFF;
+		uplink_payload->bytes[6]=servoState >> 8;
+		uplink_payload->bytes[7]=servoState &0xFF;
 	}
 	return *uplink_payload;
 }
