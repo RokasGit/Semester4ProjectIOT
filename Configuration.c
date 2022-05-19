@@ -16,6 +16,7 @@ void configuration_create(){
 	minHumidityLevel = 400;
 	configurationSemaphore = xSemaphoreCreateMutex();
 	xSemaphoreGive( configurationSemaphore);
+	// some changes
 }
 void configuration_setServoState(uint16_t state){
 	if(xSemaphoreTake(configurationSemaphore,portMAX_DELAY)==pdTRUE){
