@@ -2,7 +2,7 @@
  * Configuration.h
  *
  * Created: 5/18/2022 12:09:47 PM
- *  Author: rokas
+ *  Author: rokas, farouk
  */ 
 #pragma once
 
@@ -30,3 +30,4 @@ uint16_t configuration_getMaxHumidityLevel();
 uint16_t configuration_getMinHumidityLevel();
 void configuration_setAutomation(int automation);
 int configuration_getAutomation();
+void configuration_SetLightOnAndOf();
