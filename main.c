@@ -91,16 +91,7 @@ int main(void)
 	/* Replace with your application code */
 	while (1)
 	{
-	if ( hcsr501_isDetecting(hcsr501Inst) )
-		{
-				// Something is detected
-				status_leds_ledOn();
-		}
-	else
-		{
-				// Nothing is detected
-				status_leds_ledOff();
-		}
+
 	}
 }
 
