@@ -1,9 +1,9 @@
 /*
- * Configuration.c
- *
- * Created: 5/18/2022 12:13:40 PM
- *  Author: rokas
- */ 
+* Configuration.c
+*
+* Created: 5/18/2022 12:13:40 PM
+*  Author: rokas
+*/
 #include "Configuration.h"
 
 
@@ -46,8 +46,15 @@ uint16_t configuration_getMinHumidityLevel(){
 	return minHumidityLevel;
 }
 void configuration_setAutomation(int automation){
-	automationOff=automation;
+	if(xSemaphoreTake(configurationSemaphore,portMAX_DELAY)==pdTRUE)
+	{
+		automationOff=automation;
+		xSemaphoreGive(configurationSemaphore);
+	}
 }
 int configuration_getAutomation(){
-	return automationOff;
+	if(xSemaphoreTake(configurationSemaphore,portMAX_DELAY)==pdTRUE){
+		xSemaphoreGive(configurationSemaphore);
+		return automationOff;
+	}
 }
