@@ -9,6 +9,8 @@
 #include <stdint.h>
 #include <ATMEGA_FreeRTOS.h>
 #include <semphr.h>
+#include <status_leds.h>
+#include <stdio.h>
 
 #include "RCServo.h"
 

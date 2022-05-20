@@ -35,19 +35,20 @@ int configuration_getIsMoving(){
 }
 void configuration_setIsMoving(int moving){
 	isMoving=moving;
+	
+	configuration_SetLightOnAndOf();
 }
 
 void configuration_SetLightOnAndOf(){
-		if (configuration_getIsMoving == 1)
+		if (isMoving == 1)
 		{
+			printf("leds on!!!!!!!!!!!!!!!!!!! %d",isMoving);
 			// Something is detected
-			status_leds_ledOn();
+			status_leds_ledOn(led_ST4);
+		}else{
+			status_leds_ledOff(led_ST4);
 		}
-		else
-		{
-			// Nothing is detected
-			status_leds_ledOff();
-		}
+		
 }
 uint16_t configuration_getMaxCO2Level(){
 	return maxCO2Level;
