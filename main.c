@@ -49,13 +49,13 @@ void initialiseGroupsBuffers(){
 /*-----------------------------------------------------------*/
 void createTasks(void)
 {
-	CO2Sensor_createTask(1);
-	Temperature_createTask(1);
-	Humidity_createTask(1);
+	CO2Sensor_createTask(2);
+	Temperature_createTask(2);
+	Humidity_createTask(2);
 	Motion_createTask(1);
-	application_createTask(2);
-	rcServo_CreateTask(1);
-	downlinkLoraWANHandler_createTask(3);
+	application_createTask(3);
+	rcServo_CreateTask(2);
+	downlinkLoraWANHandler_createTask(4);
 	
 }
 
@@ -74,11 +74,11 @@ void initialiseSystem()
 
 	// vvvvvvvvvvvvvvvvv BELOW IS LoRaWAN initialisation vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	// Status Leds driver
-	status_leds_initialise(5); // Priority 5 for internal task
+	status_leds_initialise(6); // Priority 5 for internal task
 	// Initialise the LoRaWAN driver without down-link buffer
 	lora_driver_initialise(1, downlinkMessageBuffer);
 	// Create LoRaWAN task and start it up with priority 3
-	lora_handler_initialise(4);
+	lora_handler_initialise(5);
 }
 
 /*-----------------------------------------------------------*/
