@@ -1,3 +1,0 @@
-C:\Users\rokas\Desktop\esw\solutions\SmartGymCodeTest\Debug\SmartGymCodeTest.vcxproj.CopyComplete
-C:\Users\rokas\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCodeTest\Debug\SmartGymCodeTest.vcxproj.CopyComplete
-C:\Users\Nick\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCodeTest\Debug\SmartGymCodeTest.vcxproj.CopyComplete

@@ -24,10 +24,13 @@
     <ClInclude Include="DownlinkLoraWANHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Motion.h">
+    <ClInclude Include="DataReadyEventGroup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RCServo.h">
+    <ClInclude Include="DownlinkMessageBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeasureEventGroup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,10 +44,13 @@
     <ClCompile Include="DownlinkLoraWANHandler.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Motion.c">
+    <ClCompile Include="DataReadyEventGroup.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RCServo.c">
+    <ClCompile Include="DownlinkMessageBuffer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeasureEventGroup.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

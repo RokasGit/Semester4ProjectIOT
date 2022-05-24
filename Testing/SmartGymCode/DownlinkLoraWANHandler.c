@@ -23,7 +23,7 @@ void downlinkLoraWANHandler_Task() {
 	}
 }
 void downlinkLoraWANHandler_TaskRun() {
-	xMessageBufferReceive(downlinkMessageBuffer, &downlinkLoraWAN_Payload, sizeof(lora_driver_payload_t), portMAX_DELAY);
+	xMessageBufferReceive(downlinkMessageBufferMock, &downlinkLoraWAN_Payload, sizeof(lora_driver_payload_t), portMAX_DELAY);
 	if (downlinkLoraWAN_Payload.len == 1) {
 		uint16_t state = downlinkLoraWAN_Payload.bytes[0];
 		// open window

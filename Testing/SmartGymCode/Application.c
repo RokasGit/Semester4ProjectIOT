@@ -24,7 +24,7 @@ void application_Task(void* pvParameters) {
 
 }
 void application_TaskRun(void* pvParameters) {
-	EventBits_t dataBits = xEventGroupWaitBits(dataReadyEventGroup
+	EventBits_t dataBits = xEventGroupWaitBits(dataReadyEventGroupMock
 		, BIT_READY_TO_SEND_CO2 | BIT_READY_TO_SEND_HUMIDITY | BIT_READY_TO_SEND_TEMPERATURE // wait for these bits
 		, pdTRUE // clear all bits after finishing the wait
 		, pdTRUE // wait for all bits
@@ -37,7 +37,7 @@ void application_TaskRun(void* pvParameters) {
 
 	}
 	vTaskDelay(pdMS_TO_TICKS(30000));
-	xEventGroupSetBits(measureEventGroup, BIT_READY_TO_MEASURE_CO2);
+	xEventGroupSetBits(measureEventGroupMock, BIT_READY_TO_MEASURE_CO2);
 }
 // configuring package settings.
 void application_setPackageHandler() {

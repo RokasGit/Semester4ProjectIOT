@@ -21,7 +21,7 @@ typedef struct lora_driver_payload {
 
 lora_driver_payload_t downlinkLoraWAN_Payload;
 
-MessageBufferHandle_t downlinkMessageBuffer;
+MessageBufferHandle_t downlinkMessageBufferMock;
 void downlinkLoraWANHandler_createTask(UBaseType_t downlinkLorawantHandler_taskPrio);
 void downlinkLoraWANHandler_Task();
 void downlinkLoraWANHandler_TaskRun();

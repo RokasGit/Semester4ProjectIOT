@@ -1,9 +1,0 @@
-﻿  Configuration.c
-C:\Users\rokas\Desktop\esw\solutions\SmartGymCode\Configuration.c(26): warning C4715: 'configuration_getServoState': not all control paths return a value
-C:\Users\rokas\Desktop\esw\solutions\SmartGymCode\Configuration.c(69): warning C4715: 'configuration_getAutomation': not all control paths return a value
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1087,5): error MSB6006: "link.exe" exited with code 1120.
-Configuration.obj : error LNK2019: unresolved external symbol _xSemaphoreCreateMutex referenced in function _configuration_create
-Configuration.obj : error LNK2019: unresolved external symbol _xSemaphoreGive referenced in function _configuration_create
-Configuration.obj : error LNK2019: unresolved external symbol _xSemaphoreTake referenced in function _configuration_getAutomation
-MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol _main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-C:\Users\rokas\Desktop\esw\solutions\SmartGymCode\Debug\SmartGymCode.exe : fatal error LNK1120: 4 unresolved externals
