@@ -17,6 +17,11 @@ void configuration_setServoState(uint16_t state) {
 		xSemaphoreGive(rcServoSemaphore);
 	}
 }
+void configuration_setServoStateRun(uint16_t state) {
+	rcServoState = state;
+	xSemaphoreGive(configurationSemaphore);
+	xSemaphoreGive(rcServoSemaphore);
+}
 uint16_t configuration_getServoState() {
 	if (xSemaphoreTake(configurationSemaphore, portMAX_DELAY) == pdTRUE) {
 		uint16_t state = configuration_getServoStateRun();
@@ -73,4 +78,8 @@ int configuration_getAutomation() {
 		xSemaphoreGive(configurationSemaphore);
 		return automationOff;
 	}
+}
+int configuration_getAutomationRun() {
+	xSemaphoreGive(configurationSemaphore);
+	return automationOff;
 }

@@ -52,7 +52,7 @@ void createTasks(void)
 	CO2Sensor_createTask(2);
 	Temperature_createTask(2);
 	Humidity_createTask(2);
-	Motion_createTask(1);
+	//Motion_createTask(1);
 	application_createTask(3);
 	rcServo_CreateTask(2);
 	downlinkLoraWANHandler_createTask(4);

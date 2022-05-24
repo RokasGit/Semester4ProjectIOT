@@ -28,3 +28,5 @@ int configuration_getAutomation();
 void configuration_SetLightOnAndOf();
 uint16_t configuration_getServoStateRun();
 void configuration_setAutomationRun(int automation);
+void configuration_setServoStateRun(uint16_t state);
+int configuration_getAutomationRun();
