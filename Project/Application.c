@@ -16,6 +16,7 @@ void application_createTask(UBaseType_t TaskPriority){
 	, tskIDLE_PRIORITY+ TaskPriority
 	, NULL);
 }
+
 // Application Task
 void application_Task(void *pvParameters){
 	for(;;){
@@ -45,6 +46,7 @@ void application_Task(void *pvParameters){
 	}
 	
 }
+
 // configuring package settings.
 void application_setPackageHandler(){
 	sensorDataPackageHandler_setPackageLength(8);

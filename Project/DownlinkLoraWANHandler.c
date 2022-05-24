@@ -16,6 +16,7 @@ void downlinkLoraWANHandler_createTask(UBaseType_t downlinkLorawantHandler_taskP
 	tskIDLE_PRIORITY+downlinkLorawantHandler_taskPrio,
 		NULL);
 }
+
 // Task to handle loraWAN network.
 void downlinkLoraWANHandler_Task(){
 	for(;;){

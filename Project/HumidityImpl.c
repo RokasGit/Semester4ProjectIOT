@@ -11,9 +11,12 @@
 
 static uint16_t Hum;
 
+//function to get Humidity
 uint16_t Humidity_getHumidity(){
 	return Hum;
 }
+
+//function to initialize the humidity driver, checks if the return code is ok and print out the result
 void Humidity_initializeDriver(){
 	hih8120_driverReturnCode_t returnCode = hih8120_initialise();
 
@@ -27,6 +30,7 @@ void Humidity_initializeDriver(){
 	}
 }
 
+//function to initialize the Humidity task, first it wakes up the driver then it takes the measure and sets the Humidity bits
 void Humidity_Task(void* parameter){
 	
 	
@@ -65,6 +69,7 @@ void Humidity_Task(void* parameter){
 	
 }
 
+//function to clear Humidity bits  
 static void clearHumidityBit(){
 	EventBits_t clearedHumBit;
 	
@@ -81,6 +86,7 @@ static void clearHumidityBit(){
 	}
 }
 
+//function to create the Humidity task 
 void Humidity_createTask(UBaseType_t Taskpriority){
 	Humidity_initializeDriver();
 	

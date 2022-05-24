@@ -6,7 +6,7 @@
 */
 #include "Configuration.h"
 
-
+//function to create the configuration 
 void configuration_create(){
 	rcServoState=-100;
 	isMoving=0;
@@ -17,6 +17,8 @@ void configuration_create(){
 	configurationSemaphore = xSemaphoreCreateMutex();
 	xSemaphoreGive( configurationSemaphore);
 }
+
+//function to set rc servo state
 void configuration_setServoState(uint16_t state){
 	if(xSemaphoreTake(configurationSemaphore,portMAX_DELAY)==pdTRUE){
 		rcServoState=state;
@@ -24,21 +26,28 @@ void configuration_setServoState(uint16_t state){
 		xSemaphoreGive(rcServoSemaphore);
 	}
 }
+
+//function to get rc servo state
 uint16_t configuration_getServoState(){
 	if(xSemaphoreTake(configurationSemaphore,portMAX_DELAY)==pdTRUE){
 		xSemaphoreGive(configurationSemaphore);
 		return rcServoState;
 	}
 }
+
+//function to get if the motion sensor detected something 
 int configuration_getIsMoving(){
 	return isMoving;
 }
+
+//function to set if the motion sensor detected something 
 void configuration_setIsMoving(int moving){
 	isMoving=moving;
 	
 	configuration_SetLightOnAndOf();
 }
 
+//function to set light on and of
 void configuration_SetLightOnAndOf(){
 		if (isMoving == 1)
 		{
@@ -50,15 +59,23 @@ void configuration_SetLightOnAndOf(){
 		}
 		
 }
+
+//function to get the max co2 level 
 uint16_t configuration_getMaxCO2Level(){
 	return maxCO2Level;
 }
+
+//function to get if the max humidity level 
 uint16_t configuration_getMaxHumidityLevel(){
 	return maxHumidityLevel;
 }
+
+//function to get if the min humidity level 
 uint16_t configuration_getMinHumidityLevel(){
 	return minHumidityLevel;
 }
+
+//function to setup automation
 void configuration_setAutomation(int automation){
 	if(xSemaphoreTake(configurationSemaphore,portMAX_DELAY)==pdTRUE)
 	{
@@ -66,6 +83,8 @@ void configuration_setAutomation(int automation){
 		xSemaphoreGive(configurationSemaphore);
 	}
 }
+
+//function to get automation
 int configuration_getAutomation(){
 	if(xSemaphoreTake(configurationSemaphore,portMAX_DELAY)==pdTRUE){
 		xSemaphoreGive(configurationSemaphore);

@@ -5,6 +5,8 @@
  *  Author: rokas
  */ 
 #include "DataReadyEventGroup.h"
+
+//function to initialize the data redy event group
 void dataReadyEventGroup_initialize(){
 	dataReadyEventGroup = xEventGroupCreate();
 }
