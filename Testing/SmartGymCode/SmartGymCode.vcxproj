@@ -142,12 +142,18 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Configuration.h" />
+    <ClInclude Include="DataReadyEventGroup.h" />
     <ClInclude Include="DownlinkLoraWANHandler.h" />
+    <ClInclude Include="DownlinkMessageBuffer.h" />
+    <ClInclude Include="MeasureEventGroup.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.c" />
     <ClCompile Include="Configuration.c" />
+    <ClCompile Include="DataReadyEventGroup.c" />
     <ClCompile Include="DownlinkLoraWANHandler.c" />
+    <ClCompile Include="DownlinkMessageBuffer.c" />
+    <ClCompile Include="MeasureEventGroup.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

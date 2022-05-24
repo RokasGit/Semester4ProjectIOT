@@ -24,6 +24,15 @@
     <ClInclude Include="DownlinkLoraWANHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataReadyEventGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DownlinkMessageBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeasureEventGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.c">
@@ -33,6 +42,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DownlinkLoraWANHandler.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataReadyEventGroup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DownlinkMessageBuffer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeasureEventGroup.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

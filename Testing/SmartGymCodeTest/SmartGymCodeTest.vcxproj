@@ -38,10 +38,14 @@
   <ItemGroup>
     <ClCompile Include="..\SmartGymCode\Application.c" />
     <ClCompile Include="..\SmartGymCode\Configuration.c" />
+    <ClCompile Include="..\SmartGymCode\DataReadyEventGroup.c" />
     <ClCompile Include="..\SmartGymCode\DownlinkLoraWANHandler.c" />
+    <ClCompile Include="..\SmartGymCode\DownlinkMessageBuffer.c" />
+    <ClCompile Include="..\SmartGymCode\MeasureEventGroup.c" />
     <ClCompile Include="ApplicationTest.cpp" />
     <ClCompile Include="ConfigurationTest.cpp" />
     <ClCompile Include="DownlinkLoraWANHandlerTest.cpp" />
+    <ClCompile Include="EventGroupsBufferTest.cpp" />
     <ClCompile Include="FreeRTOS_FFF_MocksDefinitions.cpp" />
   </ItemGroup>
   <ItemGroup>

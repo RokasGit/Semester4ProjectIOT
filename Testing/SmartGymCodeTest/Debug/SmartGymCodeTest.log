@@ -1,8 +1,0 @@
-﻿  Application.c
-  DownlinkLoraWANHandler.c
-C:\Users\rokas\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCode\DownlinkLoraWANHandler.c(12,41): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'TaskFunction_t'
-  Generating Code...
-  ApplicationTest.cpp
-  DownlinkLoraWANHandlerTest.cpp
-  Generating Code...
-  SmartGymCodeTest.vcxproj -> C:\Users\rokas\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCode\Debug\SmartGymCodeTest.exe
