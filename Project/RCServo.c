@@ -6,9 +6,12 @@
  */ 
 #include "RCServo.h"
 
+//function to create the rcServo semaphore
 void rcServo_CreateSemaphore(){
 	rcServoSemaphore = xSemaphoreCreateBinary();
 }
+
+//function to create the rcServo task 
 void rcServo_CreateTask(UBaseType_t rcServo_task_priority){
 	rc_servo_initialise();
 	xTaskCreate(rcServo_Task,
@@ -18,6 +21,8 @@ void rcServo_CreateTask(UBaseType_t rcServo_task_priority){
 	tskIDLE_PRIORITY+rcServo_task_priority,
 	NULL);
 }
+
+//function to initialize the rcServo task 
 void rcServo_Task(){
 	for(;;){
 		if(xSemaphoreTake(rcServoSemaphore,portMAX_DELAY)==pdTRUE){

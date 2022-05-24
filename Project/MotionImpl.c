@@ -14,6 +14,7 @@ static uint16_t NrOfMovements;
 
 hcsr501_p hcsr501Inst = NULL;
 
+//function to initialize the Motion driver, creates the instance and sets the port
 void Motion_initializeDriver(){
 
 	hcsr501Inst = hcsr501_create(&PORTE, PE5);
@@ -27,7 +28,7 @@ void Motion_initializeDriver(){
 	}
 }
 
-
+//function to initialize the Motion task, checks if the sensor detects something and if it does adds to the nr of movements variable and sets isMoving in configuration 
 void Motion_Task(void* parameter){
 	
 	for(;;){
@@ -50,11 +51,12 @@ void Motion_Task(void* parameter){
 	
 }
 
+//function to get nr of movements 
 uint16_t Motion_NrOfMovements(){
 	return NrOfMovements;
 }
 
-
+//function to create the Motion task 
 void Motion_createTask(UBaseType_t Taskpriority){
 	Motion_initializeDriver();
 	

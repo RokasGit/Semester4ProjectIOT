@@ -6,6 +6,7 @@
  */ 
 #include "DownlinkMessageBuffer.h"
 
+//function to create the downlink message buffer
 void downlinkMessageBuffer_create(){
 	downlinkMessageBuffer = xMessageBufferCreate(sizeof(lora_driver_payload_t)*2);
 }

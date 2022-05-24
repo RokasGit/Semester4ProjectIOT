@@ -10,7 +10,6 @@
 #include <stdint.h>
 #include <ATMEGA_FreeRTOS.h>
 #include <task.h>
-#include <semphr.h>
 #include <hcSr501.h>
 
 #include "Configuration.h"

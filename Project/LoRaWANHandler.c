@@ -22,6 +22,7 @@ void lora_handler_task( void *pvParameters );
 
 static lora_driver_payload_t _uplink_payload;
 
+//function to initialize the lora_handler
 void lora_handler_initialise(UBaseType_t lora_handler_task_priority)
 {
 	xTaskCreate(
@@ -33,6 +34,7 @@ void lora_handler_initialise(UBaseType_t lora_handler_task_priority)
 	,  NULL );
 }
 
+/*-----------------------------------------------------------*/
 static void _lora_setup(void)
 {
 	char _out_buf[20];

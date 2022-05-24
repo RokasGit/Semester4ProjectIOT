@@ -13,6 +13,7 @@ static uint16_t Temp;
 
 
 
+//function to initialize the temperature driver, checks if the return code is ok and print out the result
 void Temperature_initializeDriver(){
 	hih8120_driverReturnCode_t returnCode = hih8120_initialise();
 
@@ -26,6 +27,9 @@ void Temperature_initializeDriver(){
 	}
 }
 
+
+
+//function to initialize the temperature task, first it wakes up the driver then it takes the measure and sets the temperature bits
 void Temperature_Task(void* parameter){
 	
 	for(;;){
@@ -64,6 +68,8 @@ void Temperature_Task(void* parameter){
 	
 }
 
+
+//function to clear temperature bits  
 static void clearTemperatureBit(){
 	EventBits_t clearedTempBit;
 	
@@ -79,9 +85,16 @@ static void clearTemperatureBit(){
 		// Bits were not set
 	}
 }
+
+
+
+//function to get temperature
 uint16_t Temperature_getTemperature(){
 	return Temp;
 }
+
+
+//function to create the temperature task 
 void Temperature_createTask(UBaseType_t Taskpriority){
 	Temperature_initializeDriver();
 	
