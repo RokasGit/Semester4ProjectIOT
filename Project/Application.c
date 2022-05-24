@@ -30,7 +30,7 @@ void application_Task(void *pvParameters){
 			printf("CO2: %d, Temperature: %d, Humidity: %d",CO2Sensor_getCO2(),Temperature_getTemperature(),Humidity_getHumidity());
 			application_setPackageHandler();
 			if(configuration_getAutomation()==0){
-				if(CO2Sensor_getCO2 > configuration_getMaxCO2Level() || Humidity_getHumidity()>configuration_getMaxHumidityLevel()
+				if(CO2Sensor_getCO2() > configuration_getMaxCO2Level() || Humidity_getHumidity()>configuration_getMaxHumidityLevel()
 				|| Humidity_getHumidity()<configuration_getMinHumidityLevel()){
 					printf("Setting rc servo to open");
 					configuration_setServoState(100);
@@ -39,10 +39,9 @@ void application_Task(void *pvParameters){
 					configuration_setServoState(-100);
 				}
 			}
-			vTaskDelay(pdMS_TO_TICKS(30000));
-			xEventGroupSetBits(measureEventGroup, BIT_READY_TO_MEASURE_CO2);
-			
 		}
+		vTaskDelay(pdMS_TO_TICKS(30000));
+		xEventGroupSetBits(measureEventGroup, BIT_READY_TO_MEASURE_CO2);
 	}
 	
 }

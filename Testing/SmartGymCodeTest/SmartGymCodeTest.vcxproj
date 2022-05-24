@@ -36,8 +36,12 @@
     <IncludePath>C:\Users\rokas\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCode;C:\Users\rokas\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCodeTest;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="..\SmartGymCode\Application.c" />
     <ClCompile Include="..\SmartGymCode\Configuration.c" />
+    <ClCompile Include="..\SmartGymCode\DownlinkLoraWANHandler.c" />
+    <ClCompile Include="ApplicationTest.cpp" />
     <ClCompile Include="ConfigurationTest.cpp" />
+    <ClCompile Include="DownlinkLoraWANHandlerTest.cpp" />
     <ClCompile Include="FreeRTOS_FFF_MocksDefinitions.cpp" />
   </ItemGroup>
   <ItemGroup>
