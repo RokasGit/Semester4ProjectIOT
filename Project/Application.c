@@ -38,10 +38,11 @@ void application_Task(void *pvParameters){
 					configuration_setServoState(-100);
 				}
 			}
-			vTaskDelay(pdMS_TO_TICKS(30000));
-			xEventGroupSetBits(measureEventGroup, BIT_READY_TO_MEASURE_CO2);
+			
 			
 		}
+		vTaskDelay(pdMS_TO_TICKS(30000));
+		xEventGroupSetBits(measureEventGroup, BIT_READY_TO_MEASURE_CO2);
 	}
 	
 }
