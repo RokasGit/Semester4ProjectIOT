@@ -5,7 +5,7 @@
 #include "FreeRTOS.h"
 #include "semphr.h"
 
-SemaphoreHandle_t rcServoSemaphore;
+SemaphoreHandle_t rcServoSemaphoreMock;
 SemaphoreHandle_t configurationSemaphore;
 uint16_t rcServoState;
 int isMoving;

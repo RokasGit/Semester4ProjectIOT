@@ -14,13 +14,13 @@ void configuration_setServoState(uint16_t state) {
 	if (xSemaphoreTake(configurationSemaphore, portMAX_DELAY) == pdTRUE) {
 		rcServoState = state;
 		xSemaphoreGive(configurationSemaphore);
-		xSemaphoreGive(rcServoSemaphore);
+		xSemaphoreGive(rcServoSemaphoreMock);
 	}
 }
 void configuration_setServoStateRun(uint16_t state) {
 	rcServoState = state;
 	xSemaphoreGive(configurationSemaphore);
-	xSemaphoreGive(rcServoSemaphore);
+	xSemaphoreGive(rcServoSemaphoreMock);
 }
 uint16_t configuration_getServoState() {
 	if (xSemaphoreTake(configurationSemaphore, portMAX_DELAY) == pdTRUE) {
