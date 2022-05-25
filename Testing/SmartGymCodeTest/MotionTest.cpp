@@ -16,7 +16,7 @@ protected:
 		RESET_FAKE(xTaskCreate);
 		FFF_RESET_HISTORY();
 	}
-	void TearDown() override {}
+	   void TearDown() override {}
 };
 
 TEST_F(MotionTest, ApplicationCreateTask) {
