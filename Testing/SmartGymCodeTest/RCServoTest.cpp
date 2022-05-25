@@ -6,7 +6,6 @@ extern "C" {
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
-
 }
 
 class RCServoTest : public ::testing::Test {
