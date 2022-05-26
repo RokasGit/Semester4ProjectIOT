@@ -24,10 +24,11 @@ void downlinkLoraWANHandler_Task(){
 		printf("Message received-------: port No.: %d, with %d bytes",downlinkLoraWAN_Payload.portNo,downlinkLoraWAN_Payload.len);
 		if(downlinkLoraWAN_Payload.len==1){
 			uint16_t state = downlinkLoraWAN_Payload.bytes[0];
-			configuration_setServoState(state);
-			if(state!=-100){
+			if(state==100){
+				configuration_setServoState(state);
 				configuration_setAutomation(1);
-			}else{
+			}else if(state==0){
+				configuration_setServoState(-100);
 				configuration_setAutomation(0);
 			}
 		}
