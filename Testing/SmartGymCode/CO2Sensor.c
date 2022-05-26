@@ -1,8 +1,8 @@
 /*
 * CO2Sensor.c
 *
-* Created: 5/3/2022 8:36:56 PM
-*  Author: rokas
+* Created: 5/24/2022 8:36:56 PM
+*  Author: farouk
 */
 
 
@@ -29,6 +29,14 @@ uint16_t CO2Sensor_getCO2() {
 
 //function to initialize the co2 task
 void CO2Sensor_Task() {
+	for (;;) {
+		CO2Sensor_Task_Run();
+	
+
+	}
+}
+
+void CO2Sensor_Task_Run() {
 	for (;;) {
 		EventBits_t measureBits;
 		measureBits = xEventGroupWaitBits(

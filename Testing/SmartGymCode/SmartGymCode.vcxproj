@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Nick\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCodeTest;$(IncludePath)</IncludePath>
+    <IncludePath>F:\VIA\Fourth Semester\SEP\group\Semester4ProjectIOT\Testing\SmartGymCode;F:\VIA\Fourth Semester\SEP\group\Semester4ProjectIOT\Testing\SmartGymCodeTest;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,19 +141,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="CO2Sensor.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="DataReadyEventGroup.h" />
     <ClInclude Include="DownlinkLoraWANHandler.h" />
     <ClInclude Include="DownlinkMessageBuffer.h" />
+    <ClInclude Include="Humidity.h" />
     <ClInclude Include="MeasureEventGroup.h" />
     <ClInclude Include="Motion.h" />
     <ClInclude Include="RCServo.h" />
+    <ClInclude Include="Temperature.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.c" />
+    <ClCompile Include="C:\Users\Farouk\Downloads\Testing\Testing\SmartGymCode\Temperature.c" />
+    <ClCompile Include="CO2Sensor.c" />
     <ClCompile Include="Configuration.c" />
     <ClCompile Include="DataReadyEventGroup.c" />
     <ClCompile Include="DownlinkLoraWANHandler.c" />
+    <ClCompile Include="Humidity.c" />
     <ClCompile Include="Motion.c" />
     <ClCompile Include="RCServo.c" />
     <ClCompile Include="DownlinkMessageBuffer.c" />

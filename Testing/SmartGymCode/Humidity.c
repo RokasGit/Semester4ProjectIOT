@@ -1,8 +1,9 @@
 /*
  * HumidityImpl.c
  *
- * Created: 5/4/2022 10:43:34 PM
- *  Author: Farouk
+ * 
+* Created: 5/24/2022 8:36:56 PM
+*  Author: farouk
  */
 
 #include "Humidity.h"
@@ -30,11 +31,19 @@ void Humidity_initializeDriver() {
 	}
 }
 
+
 //function to initialize the Humidity task, first it wakes up the driver then it takes the measure and sets the Humidity bits
 void Humidity_Task(void) {
 
-
 	for (;;) {
+	
+		Humidity_Task_Run();
+	}
+}
+
+
+void Humidity_Task_Run(void) {
+
 		EventBits_t measureBits;
 		measureBits = xEventGroupWaitBits(
 			measureEventGroup, // measure event group
@@ -52,7 +61,7 @@ void Humidity_Task(void) {
 
 			if (1 != 1) {
 				printf("Humidity MEASSURING FAILED!!");
-				continue;
+				
 			}
 
 			vTaskDelay(pdMS_TO_TICKS(10));
@@ -65,7 +74,6 @@ void Humidity_Task(void) {
 
 		}
 		vTaskDelay(pdMS_TO_TICKS(200));
-	}
 
 }
 

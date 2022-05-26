@@ -19,10 +19,10 @@ protected:
 };
 
 TEST_F(HumidityTest, ApplicationCreateTask) {
-	CO2Sensor_createTask(3);
+	CO2Sensor_Task_Run();
 	ASSERT_EQ(1, xTaskCreate_fake.call_count);
 }
 TEST_F(HumidityTest, ApplicationTask) {
-	CO2Sensor_Task();
+	CO2Sensor_Task_Run();
 	ASSERT_EQ(1, vTaskDelay_fake.call_count);
 }

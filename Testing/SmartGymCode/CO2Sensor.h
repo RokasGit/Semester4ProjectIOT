@@ -20,4 +20,5 @@ static void clearCO2ReadyBit();
 static void mh_z19_callBack(uint16_t ppm);
 uint16_t CO2Sensor_getCO2();
 void CO2Sensor_initializeDriver();
+void CO2Sensor_Task_Run();
 

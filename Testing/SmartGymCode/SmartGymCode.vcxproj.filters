@@ -33,6 +33,21 @@
     <ClInclude Include="MeasureEventGroup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Motion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RCServo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CO2Sensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Humidity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Temperature.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.c">
@@ -51,6 +66,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MeasureEventGroup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Motion.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RCServo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Farouk\Downloads\Testing\Testing\SmartGymCode\Temperature.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CO2Sensor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Humidity.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

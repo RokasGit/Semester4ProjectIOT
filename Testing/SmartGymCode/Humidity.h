@@ -1,8 +1,8 @@
 /*
  * Humidity.h
  *
- * Created: 5/4/2022 10:41:00 PM
- *  Author: Farouk
+* Created: 5/24/2022 8:36:56 PM
+*  Author: farouk
  */
 
 #include <stdio.h>
@@ -20,4 +20,5 @@ void Humidity_Task(void);
 uint16_t Humidity_getHumidity();
 static void clearHumidityBit();
 void Humidity_createTask(UBaseType_t Taskpriority);
+void Humidity_Task_Run(void);
 

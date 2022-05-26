@@ -23,6 +23,6 @@ TEST_F(HumidityTest, ApplicationCreateTask) {
 	ASSERT_EQ(1, xTaskCreate_fake.call_count);
 }
 TEST_F(HumidityTest, ApplicationTask) {
-	Humidity_Task();
+	void Humidity_Task_Run(void);
 	ASSERT_EQ(1, vTaskDelay_fake.call_count);
 }
