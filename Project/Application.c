@@ -32,10 +32,10 @@ void application_Task(void *pvParameters){
 			if(configuration_getAutomation()==0){
 				if(CO2Sensor_getCO2() > configuration_getMaxCO2Level() || Humidity_getHumidity()>configuration_getMaxHumidityLevel()
 				|| Humidity_getHumidity()<configuration_getMinHumidityLevel()){
-					printf("Setting rc servo to open");
+				
 					configuration_setServoState(100);
 					}else{
-						printf("Setting rc servo to closed");
+						
 					configuration_setServoState(-100);
 				}
 			}

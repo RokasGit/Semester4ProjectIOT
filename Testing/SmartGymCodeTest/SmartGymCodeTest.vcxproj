@@ -33,7 +33,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Nick\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCode;C:\Users\Nick\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCodeTest;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\rokas\RiderProjects\Semester4ProjectIOT\Testing\SmartGymCodeTest;C:\Users\rokas\RiderProjects\Semester4ProjectIOT\Testing\SmartGymCode;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\SmartGymCode\Application.c" />

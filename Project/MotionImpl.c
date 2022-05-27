@@ -10,8 +10,6 @@
 #define MotionTaskStackSize (configMINIMAL_STACK_SIZE)
 
 
-static uint16_t NrOfMovements;
-
 hcsr501_p hcsr501Inst = NULL;
 
 //function to initialize the Motion driver, creates the instance and sets the port
@@ -33,27 +31,25 @@ void Motion_Task(void* parameter){
 	
 	for(;;){
 		
+		
+		Motion_initializeDriver();
+		
 		if ( hcsr501_isDetecting(hcsr501Inst) )
 		{
 			// Something is detected
 			configuration_setIsMoving(1);
-			NrOfMovements++;
-			printf("MOVEMENT DETECTED: %d times \n",NrOfMovements);
+			hcsr501_destroy(hcsr501Inst);
+			vTaskDelay(pdMS_TO_TICKS(300000));
 		}
 		else
 		{
 			// Nothing is detected
 			configuration_setIsMoving(0);
+			vTaskDelay(pdMS_TO_TICKS(1000));
 		}
-		vTaskDelay(pdMS_TO_TICKS(10000));
 		
 	}
 	
-}
-
-//function to get nr of movements 
-uint16_t Motion_NrOfMovements(){
-	return NrOfMovements;
 }
 
 //function to create the Motion task 

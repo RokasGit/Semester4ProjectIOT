@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Nick\Documents\GitHub\Semester4ProjectIOT\Testing\SmartGymCodeTest;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\rokas\RiderProjects\Semester4ProjectIOT\Testing\SmartGymCodeTest;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
