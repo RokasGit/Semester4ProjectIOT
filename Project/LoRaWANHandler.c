@@ -133,5 +133,6 @@ void lora_handler_task( void *pvParameters )
 		_uplink_payload = sensorDataPackageHandler_getLoraPayload(2);
 		status_leds_shortPuls(led_ST4);  // OPTIONAL
 		printf("Upload Message >%s<\n", lora_driver_mapReturnCodeToText(lora_driver_sendUploadMessage(false, &_uplink_payload)));
+		free(&_uplink_payload);
 	}
 }
