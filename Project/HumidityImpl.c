@@ -16,20 +16,6 @@ uint16_t Humidity_getHumidity(){
 	return Hum;
 }
 
-//function to initialize the humidity driver, checks if the return code is ok and print out the result
-void Humidity_initializeDriver(){
-	hih8120_driverReturnCode_t returnCode = hih8120_initialise();
-
-	if ( HIH8120_OK == returnCode )
-	{
-		printf("Humidity Driver initialized");
-	}
-	
-	else {
-		printf("Error: %d", returnCode);
-	}
-}
-
 //function to initialize the Humidity task, first it wakes up the driver then it takes the measure and sets the Humidity bits
 void Humidity_Task(void* parameter){
 	
@@ -88,8 +74,6 @@ static void clearHumidityBit(){
 
 //function to create the Humidity task 
 void Humidity_createTask(UBaseType_t Taskpriority){
-	Humidity_initializeDriver();
-	
 	xTaskCreate(
 	Humidity_Task,
 	"Humidity Task",
