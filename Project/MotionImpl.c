@@ -33,7 +33,6 @@ void Motion_Task(void* parameter){
 	
 	for(;;){
 		
-		//Motion_initializeDriver();
 		
 		if ( hcsr501_isDetecting(hcsr501Inst) )
 		{
@@ -41,12 +40,10 @@ void Motion_Task(void* parameter){
 			configuration_setIsMoving(1);
 			NrOfMovements++;
 			printf("MOVEMENT DETECTED: %d times \n",NrOfMovements);
-			//hcsr501_destroy(hcsr501Inst);
 			vTaskDelay(pdMS_TO_TICKS(300000));
 		}
 		else
 		{
-			// Nothing is detected
 			configuration_setIsMoving(0);
 			vTaskDelay(pdMS_TO_TICKS(1000));
 		}

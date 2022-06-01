@@ -26,6 +26,7 @@
 #include "Application.h"
 #include "DownlinkMessageBuffer.h"
 #include "Configuration.h"
+#include "SensorDataPackageHandler.h"
 // Sensors/Hardware
 #include "Temperature.h"
 #include "CO2Sensor.h"
@@ -44,6 +45,7 @@ void initialiseGroupsBuffers(){
 	downlinkMessageBuffer_create();
 	configuration_create();
 	rcServo_CreateSemaphore();
+	sensorDataPackageHandler_createLoraPayload();
 	
 }
 /*-----------------------------------------------------------*/
@@ -52,6 +54,7 @@ void createTasks(void)
 	CO2Sensor_createTask(1);
 	Temperature_createTask(1);
 	Humidity_createTask(1);
+	// motion sensor is off, as there is not enough Heap space to initialize the task and driver.
 	//Motion_createTask(1);
 	application_createTask(2);
 	rcServo_CreateTask(1);
@@ -75,6 +78,7 @@ void initialiseSystem()
 	// vvvvvvvvvvvvvvvvv BELOW IS LoRaWAN initialisation vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	// Status Leds driver
 	status_leds_initialise(6); // Priority 5 for internal task
+	
 	// Initialise the LoRaWAN driver without down-link buffer
 	lora_driver_initialise(1, downlinkMessageBuffer);
 	// Create LoRaWAN task and start it up with priority 3
