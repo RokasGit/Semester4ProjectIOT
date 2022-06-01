@@ -26,6 +26,7 @@
 #include "Application.h"
 #include "DownlinkMessageBuffer.h"
 #include "Configuration.h"
+#include "SensorDataPackageHandler.h"
 // Sensors/Hardware
 #include "Temperature.h"
 #include "CO2Sensor.h"
@@ -75,6 +76,7 @@ void initialiseSystem()
 	// vvvvvvvvvvvvvvvvv BELOW IS LoRaWAN initialisation vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	// Status Leds driver
 	status_leds_initialise(6); // Priority 5 for internal task
+	sensorDataPackageHandler_createLoraPayload();
 	// Initialise the LoRaWAN driver without down-link buffer
 	lora_driver_initialise(1, downlinkMessageBuffer);
 	// Create LoRaWAN task and start it up with priority 3

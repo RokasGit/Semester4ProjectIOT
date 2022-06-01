@@ -11,7 +11,7 @@
 
 #include <ATMEGA_FreeRTOS.h>
 #include <lora_driver.h>
-
+void sensorDataPackageHandler_createLoraPayload();
 void sensorDataPackageHandler_setCo2Ppm(uint16_t ppm);
 void sensorDataPackageHandler_setTemperature(uint16_t celsius);
 void sensorDataPackageHandler_setHumidity(uint16_t hum);

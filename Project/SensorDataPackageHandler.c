@@ -15,6 +15,11 @@ static uint16_t temperatureCelsius;
 static uint16_t servoState;
 // LoraWAN package size;
 static uint8_t loraPackageLength;
+lora_driver_payload_t *uplink_payload;
+// creates lora payload
+void sensorDataPackageHandler_createLoraPayload(){
+	uplink_payload=pvPortMalloc(sizeof(lora_driver_payload_t));
+}
 
 // function to set co2 in the package;
 void sensorDataPackageHandler_setCo2Ppm(uint16_t ppm){
@@ -38,9 +43,9 @@ servoState=state;
 }
 // function to create a package to upload to loraWAN gateway.
 lora_driver_payload_t sensorDataPackageHandler_getLoraPayload(uint8_t port_No){
-	lora_driver_payload_t *uplink_payload;
 	
-	uplink_payload=pvPortMalloc(sizeof(lora_driver_payload_t));
+	
+	
 	
 	if(uplink_payload !=NULL){
 		uplink_payload->portNo=port_No;
