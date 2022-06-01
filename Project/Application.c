@@ -5,8 +5,6 @@
 *  Author: rokas
 */
 #include "Application.h"
-void vPortGetHeapStats( HeapStats_t *xHeapStats );
-HeapStats_t heapStats;
 // Creating application task
 void application_createTask(UBaseType_t TaskPriority){
 	xTaskCreate(
@@ -30,8 +28,6 @@ void application_Task(void *pvParameters){
 			printf("Ready to send measurements");
 			printf("CO2: %d, Temperature: %d, Humidity: %d",CO2Sensor_getCO2(),Temperature_getTemperature(),Humidity_getHumidity());
 			application_setPackageHandler();
-			vPortGetHeapStats(&heapStats);
-			printf("Current heap size: %d, minimum heap size from the start: %d",heapStats.xAvailableHeapSpaceInBytes,heapStats.xMinimumEverFreeBytesRemaining);
 			if(configuration_getAutomation()==0){
 				if(CO2Sensor_getCO2() > configuration_getMaxCO2Level() || Humidity_getHumidity()>configuration_getMaxHumidityLevel()
 				|| Humidity_getHumidity()<configuration_getMinHumidityLevel()){
