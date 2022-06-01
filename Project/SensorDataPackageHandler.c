@@ -15,7 +15,7 @@ static uint16_t temperatureCelsius;
 static uint16_t servoState;
 // LoraWAN package size;
 static uint8_t loraPackageLength;
-lora_driver_payload_t *uplink_payload;
+static lora_driver_payload_t *uplink_payload;
 // creates lora payload
 void sensorDataPackageHandler_createLoraPayload(){
 	uplink_payload=pvPortMalloc(sizeof(lora_driver_payload_t));
@@ -42,11 +42,7 @@ void sensorDataPackageHandler_setWindowState(uint16_t state){
 servoState=state;
 }
 // function to create a package to upload to loraWAN gateway.
-lora_driver_payload_t sensorDataPackageHandler_getLoraPayload(uint8_t port_No){
-	
-	
-	
-	
+lora_driver_payload_t sensorDataPackageHandler_getLoraPayload(uint8_t port_No){	
 	if(uplink_payload !=NULL){
 		uplink_payload->portNo=port_No;
 		uplink_payload->len=loraPackageLength;

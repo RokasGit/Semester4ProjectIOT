@@ -31,7 +31,6 @@ void application_Task(void *pvParameters){
 			printf("CO2: %d, Temperature: %d, Humidity: %d",CO2Sensor_getCO2(),Temperature_getTemperature(),Humidity_getHumidity());
 			application_setPackageHandler();
 			vPortGetHeapStats(&heapStats);
-			vPortFree(&heapStats);
 			printf("Current heap size: %d, minimum heap size from the start: %d",heapStats.xAvailableHeapSpaceInBytes,heapStats.xMinimumEverFreeBytesRemaining);
 			if(configuration_getAutomation()==0){
 				if(CO2Sensor_getCO2() > configuration_getMaxCO2Level() || Humidity_getHumidity()>configuration_getMaxHumidityLevel()
